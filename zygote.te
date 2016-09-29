@@ -28,7 +28,7 @@ allow zygote dalvikcache_data_file:file create_file_perms;
 allow zygote resourcecache_data_file:dir rw_dir_perms;
 allow zygote resourcecache_data_file:file create_file_perms;
 # For art.
-allow zygote dalvikcache_data_file:file execute;
+# allow zygote dalvikcache_data_file:file execute;
 # Execute dexopt.
 allow zygote system_file:file x_file_perms;
 allow zygote dex2oat_exec:file rx_file_perms;
@@ -76,3 +76,8 @@ allow zygote zygote_exec:file rx_file_perms;
 # setcon (dyntransition) to any types other than those associated
 # with appdomain plus system_server.
 neverallow zygote ~{ appdomain system_server }:process dyntransition;
+
+# Zygote should never execute anything from /data.
+neverallow zygote {
+  data_file_type
+}:file no_x_file_perms;
