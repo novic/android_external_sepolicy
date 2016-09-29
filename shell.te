@@ -71,6 +71,10 @@ allow shell { service_manager_type -gatekeeper_service }:service_manager find;
 allow shell domain:dir { search open read getattr };
 allow shell domain:{ file lnk_file } { open read getattr };
 
+allow shell proc_interrupts:file r_file_perms;
+allow shell proc_stat:file r_file_perms;
+allow shell proc_timer:file r_file_perms;
+
 # allow shell to read /proc/pid/attr/current for ps -Z
 allow shell domain:process getattr;
 

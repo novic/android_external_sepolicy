@@ -111,3 +111,5 @@ allow dumpstate { service_manager_type -gatekeeper_service }:service_manager fin
 allow dumpstate servicemanager:service_manager list;
 
 allow dumpstate devpts:chr_file rw_file_perms;
+
+allow dumpstate proc_interrupts:file r_file_perms;
